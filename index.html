@@ -28,16 +28,12 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 
 .wrap{max-width:720px;margin:0 auto;padding:40px 24px 80px}
 
-/* HEADER */
 .hdr{text-align:center;margin-bottom:48px}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
 .hdr h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,38px);line-height:1.15;margin-bottom:12px}
 .hdr p{font-size:14px;color:var(--mid);line-height:1.6;max-width:460px;margin:0 auto}
 
-/* SELECTOR SCREEN */
 .selector{display:block}
-.selector-done{display:none}
-
 .step-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .step-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:28px;margin-bottom:16px}
 .step-q{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:18px;color:var(--dark)}
@@ -51,7 +47,6 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 .btn-generate:hover{background:#333}
 .btn-generate:disabled{background:var(--border);color:var(--light);cursor:not-allowed}
 
-/* PLAN SCREEN */
 .plan-screen{display:none}
 .plan-screen.active{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -62,13 +57,11 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 .goal-intro{background:var(--dark);color:var(--white);border-radius:4px;padding:24px 26px;margin-bottom:32px}
 .goal-intro p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.82)}
 
-/* DAY TABS */
 .day-tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
 .day-tab{padding:9px 18px;background:transparent;border:1.5px solid var(--border);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--light);cursor:pointer;transition:all .15s ease}
 .day-tab:hover{border-color:var(--steel);color:var(--steel)}
 .day-tab.active{border-color:var(--steel);background:var(--steel);color:var(--white)}
 
-/* SESSION CARD */
 .session{display:none}
 .session.active{display:block;animation:fadeUp .25s ease}
 
@@ -85,24 +78,26 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 .block-chevron.open{transform:rotate(180deg)}
 .block-body{padding:16px 20px;display:none}
 .block-body.open{display:block}
-.block-note{font-size:12px;color:var(--mid);font-style:italic;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 
-/* EXERCISE ROW */
 .ex-num{font-size:11px;font-weight:700;color:var(--light);width:20px;flex-shrink:0}
 .ex-info{flex:1;min-width:0}
 .ex-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:2px}
 .ex-detail{font-size:12px;color:var(--mid)}
+.ex-alt-label{font-size:11px;color:var(--light);font-style:italic;margin-top:4px;margin-bottom:2px}
+.alt-watch-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);background:rgba(230,126,34,0.1);padding:6px 10px;border-radius:2px;transition:all .15s ease;border:none;cursor:pointer;font-family:Montserrat,sans-serif}
+.alt-watch-btn:hover,.alt-watch-btn.vactive{background:var(--amber);color:var(--white)}
+.ex-alt{font-size:11px;color:var(--light);margin-top:3px;font-style:italic}
 
 .rest-note{background:#f7f6f2;border-radius:3px;padding:10px 14px;font-size:12px;color:var(--mid);font-weight:600;margin-top:10px;text-align:center;letter-spacing:.04em}
 
-/* COOLDOWN */
-.cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px}
+.cooldown-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .cooldown-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
 .cooldown-text{font-size:14px;color:var(--dark);font-weight:500}
-.cooldown-link a{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--white);background:var(--steel);padding:10px 16px;border-radius:3px;text-decoration:none;white-space:nowrap;transition:background .15s ease}
-.cooldown-link a:hover{background:var(--steel-dark)}
+.cooldown-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--white);background:var(--steel);padding:10px 16px;border-radius:3px;white-space:nowrap;transition:background .15s ease;border:none;cursor:pointer;font-family:Montserrat,sans-serif}
+.cooldown-btn:hover{background:var(--steel-dark)}
+.cooldown-video{display:none;padding-top:14px}
 
-/* VIDEO PLAYER */
 .video-container{display:none;padding:12px 0 4px}
 .video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:3px;overflow:hidden;background:#000}
 .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
@@ -112,15 +107,7 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 .ex-row-wrap{padding:10px 0;border-bottom:1px solid #f0ede6}
 .ex-row-wrap:last-child{border-bottom:none;padding-bottom:0}
 .ex-row-inner{display:flex;align-items:center;gap:12px;width:100%}
-.cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px}
-.cooldown-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.cooldown-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
-.cooldown-text{font-size:14px;color:var(--dark);font-weight:500}
-.cooldown-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--white);background:var(--steel);padding:10px 16px;border-radius:3px;white-space:nowrap;transition:background .15s ease;border:none;cursor:pointer;font-family:Montserrat,sans-serif}
-.cooldown-btn:hover{background:var(--steel-dark)}
-.cooldown-video{display:none;padding-top:14px}
 
-/* RESET */
 .reset-row{margin-top:32px;text-align:center}
 .btn-reset{background:transparent;border:1.5px solid var(--border);color:var(--light);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:11px 24px;border-radius:3px;cursor:pointer;transition:all .15s ease}
 .btn-reset:hover{border-color:var(--dark);color:var(--dark)}
@@ -137,7 +124,6 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 <body>
 <div class="wrap">
 
-<!-- SELECTOR -->
 <div class="selector" id="selectorScreen">
   <div class="hdr">
     <div class="eyebrow">The Ultimate Performer</div>
@@ -188,7 +174,6 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
   <button class="btn-generate" id="generateBtn" disabled onclick="generatePlan()">Build My Plan →</button>
 </div>
 
-<!-- PLAN -->
 <div class="plan-screen" id="planScreen">
   <div class="hdr">
     <div class="eyebrow">Your Training Plan</div>
@@ -215,7 +200,6 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 </div>
 
 <script>
-// ─── USER SELECTIONS ────────────────────────────────────────────
 const sel = {loc:null,level:null,days:null,goal:null};
 
 function pick(btn){
@@ -229,9 +213,9 @@ function checkReady(){
   document.getElementById('generateBtn').disabled=!(sel.loc&&sel.level&&sel.days&&sel.goal);
 }
 
-// ─── VIDEO LINKS ────────────────────────────────────────────────
+// ALTERNATIVES MAP
+// VIDEO LINKS
 const V={
-  // Core
   'Bicycle Crunches':'https://youtu.be/NDeVaEgqyM4',
   'Hollow Rocks':'https://youtu.be/QpiHM7QW26k',
   'Hollow Hold':'https://youtu.be/ZmP70qJCmJE',
@@ -250,14 +234,12 @@ const V={
   'DB Weighted Sit Ups':'https://youtu.be/WW73gnPc0-0',
   'DB Plank Pull Through':'https://youtu.be/jXGVcMimEXw',
   'Shoulder Taps':'https://youtu.be/bzRSKpYdk6g',
-  // Push BW
   'Push Ups':'https://youtu.be/lc3SGox8cV4',
   'Incline Push Ups':'https://youtu.be/2JGcbJIKM6w',
   'Hand Release Push Ups':'https://youtu.be/Yc7A2rZf7DA',
   'Half Burpees':'https://youtu.be/B3Aoj_DCg2I',
   'Burpees':'https://youtu.be/WIJNqc-R33A',
   'Dips':'https://youtu.be/eR7rg7QuLVg',
-  // Push DB
   'DB Skull Crushers':'https://youtu.be/O8Y_DrbNsYo',
   'Overhead Extension':'https://youtu.be/-st8MphtMo4',
   'DB Close Grip Press':'https://youtu.be/RFDOJPZeQ_Q',
@@ -274,12 +256,10 @@ const V={
   'DB Seated Lateral Raise':'https://youtu.be/RV_aFAuZmuA',
   'DB Front Raise':'https://youtu.be/znYyAEbBEns',
   'DB Push Press':'https://youtu.be/yzI5Qgt9ezE',
-  // Push BB
   'BB Bench Press':'https://youtu.be/Ob6JAaawbMI',
   'BB Incline Bench Press':'https://youtu.be/DWA61Qi_0y0',
   'BB Military Press':'https://youtu.be/-hH8K49fhIU',
   'BB Push Press':'https://youtu.be/YCpfoAGvRYE',
-  // Pull DB
   'DB Single Arm Row':'https://youtu.be/N-0-7Kluk9E',
   'DB Bent Over Row':'https://youtu.be/JAkmQciPSK8',
   'DB Renegade Row w/Push Up':'https://youtu.be/XS5vi6BARbc',
@@ -294,16 +274,13 @@ const V={
   'DB Hammer Curls':'https://youtu.be/jYQ8peSq2Jc',
   'DB Concentrated Curl':'https://youtu.be/eg44sKb8DY4',
   'DB Single Arm Preacher Curl':'https://youtu.be/8S-k29BuPzw',
-  // Pull BB
   'BB Bent Over Row':'https://youtu.be/TVZd8_LeFfo',
   'BB Curl':'https://youtu.be/d-H2Z9e0Qyc',
-  // Legs BW
   'Bodyweight Squat':'https://youtu.be/ef_sL49w7M8',
   'Jumping Squat':'https://youtu.be/CYNsX2nIi0I',
   'Pistol Squat':'https://youtu.be/Jmk9ah8hK6I',
   'Alternating Step Ups':'https://youtu.be/4aKLWcnnl24',
   'Single Leg Glute Bridge':'https://youtu.be/UVEmU7jMPRw',
-  // Legs DB
   'DB Goblet Squat':'https://youtu.be/gs3RYDA4xpo',
   'DB Front Squat':'https://youtu.be/1gXKOOmIcMI',
   'DB Single Arm Front Squat':'https://youtu.be/ftpmyqIJK0E',
@@ -317,7 +294,6 @@ const V={
   'DB Single Leg Hip Thrust':'https://youtu.be/txmvGmkRHGM',
   'DB Single Leg Glute Bridge':'https://youtu.be/mE8H3FU4LPs',
   'DB Hip Thrust':'https://youtu.be/vsbw0veZiBw',
-  // Legs BB
   'BB Hip Thrust':'https://youtu.be/Pu3kO_5TC-k',
   'BB Romanian Deadlift':'https://youtu.be/iRxfazIIOdM',
   'BB Sumo Deadlift':'https://youtu.be/yKkGitOwqoU',
@@ -326,7 +302,6 @@ const V={
   'BB Front Rack Lunge':'https://youtu.be/6wgh8zYemnQ',
   'BB Reverse Lunges':'https://youtu.be/OF1mNJVI6WU',
   'BB Back Squat':'https://youtu.be/g9YR-_fgth4',
-  // Full Body
   'Walk Outs':'https://youtu.be/HzeIJTEAO4A',
   'DB External Rotations':'https://youtu.be/zE3OjAxysYM',
   'DB Swings':'https://youtu.be/OGiKBrRlSMY',
@@ -338,7 +313,32 @@ const V={
   'Mountain Climbers':'https://youtu.be/nmwgirgXLYM',
 };
 
-// ─── GOAL CONFIG ────────────────────────────────────────────────
+const ALTS={
+  // BB → DB alternatives
+  'BB Bench Press':'DB Bench Press',
+  'BB Incline Bench Press':'DB Incline Press',
+  'BB Military Press':'DB Seated Shoulder Press',
+  'BB Push Press':'DB Push Press',
+  'BB Bent Over Row':'DB Bent Over Row',
+  'BB Curl':'DB Bicep Curls',
+  'BB Back Squat':'DB Goblet Squat',
+  'BB Front Squat':'DB Front Squat',
+  'BB Front Rack Lunge':'DB Reverse Lunges',
+  'BB Reverse Lunges':'DB Reverse Lunges',
+  'BB Romanian Deadlift':'DB Single Leg Deadlift',
+  'BB Sumo Deadlift':'DB Sumo Deadlift',
+  'BB Hip Thrust':'DB Hip Thrust',
+  'BB Good Mornings':'DB Bent Over Row',
+  'BB Hang Clean & Press':'DB Hang Clean & Press',
+  // BW → easier regression
+  'Hand Release Push Ups':'Push Ups',
+  'Push Ups':'Incline Push Ups',
+  'Burpees':'Half Burpees',
+  'Pistol Squat':'Jumping Squat',
+  'Jumping Squat':'Bodyweight Squat',
+  'Dips':'Push Ups',
+};
+
 const GOALS={
   loss:{
     label:'Weight Loss',
@@ -372,19 +372,9 @@ const GOALS={
   }
 };
 
-// ─── PLAN DATA ────────────────────────────────────────────────────
-// Each plan: array of days. Each day: {name, type, warmup[], triA[], triB[], core[]}
-// Exercise format: {name, sets, reps} — reps can be a key 'compound'|'isolation'|'core' or a fixed string
-
 function R(name,type,sets){return{name,type,sets};}
-// type: 'compound','isolation','core','fixed:X'
 
 const PLANS={
-
-// ══════════════════════════════════════════════════════
-// GYM PLANS
-// ══════════════════════════════════════════════════════
-
 gym_2:{
   beginner:[
     {name:'Day 1 — Upper Body',type:'upper',
@@ -435,7 +425,6 @@ gym_2:{
      core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
   ]
 },
-
 gym_3:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -507,7 +496,6 @@ gym_3:{
      core:[R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2),R('Hollow Hold','core',2)]}
   ]
 },
-
 gym_4:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -600,11 +588,6 @@ gym_4:{
      core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
   ]
 },
-
-// ══════════════════════════════════════════════════════
-// HOME — DUMBBELLS
-// ══════════════════════════════════════════════════════
-
 home_db_2:{
   beginner:[
     {name:'Day 1 — Upper Body',type:'upper',
@@ -655,7 +638,6 @@ home_db_2:{
      core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
   ]
 },
-
 home_db_3:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -727,7 +709,6 @@ home_db_3:{
      core:[R('Hollow Hold','core',2),R('Side Plank Hip Dips','core',2),R('Leg Raises','core',2)]}
   ]
 },
-
 home_db_4:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -820,11 +801,6 @@ home_db_4:{
      core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
   ]
 },
-
-// ══════════════════════════════════════════════════════
-// BODYWEIGHT — PPL
-// ══════════════════════════════════════════════════════
-
 home_bw_2:{
   beginner:[
     {name:'Day 1 — Upper Body',type:'upper',
@@ -875,7 +851,6 @@ home_bw_2:{
      core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
   ]
 },
-
 home_bw_3:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -947,7 +922,6 @@ home_bw_3:{
      core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
   ]
 },
-
 home_bw_4:{
   beginner:[
     {name:'Day 1 — Push',type:'push',
@@ -1040,11 +1014,6 @@ home_bw_4:{
      core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
   ]
 },
-
-// ══════════════════════════════════════════════════════
-// BODYWEIGHT — FULL BODY CONDITIONING (3 days)
-// ══════════════════════════════════════════════════════
-
 home_bw_cond_3:{
   beginner:[
     {name:'Day 1 — Full Body A',type:'conditioning',
@@ -1116,18 +1085,9 @@ home_bw_cond_3:{
      core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
   ]
 }
+};
 
-}; // end PLANS
-
-// ─── GENERATE ────────────────────────────────────────────────────
-function getPlanKey(){
-  const {loc,days}=sel;
-  // Special case: bodyweight conditioning 3-day shown as extra option
-  if(loc==='home_bw'&&days==='3'&&sel._bwMode==='cond') return 'home_bw_cond_3';
-  return `${loc}_${days}`;
-}
-
-function getReps(type,goal,level){
+function getReps(type,goal){
   const g=GOALS[goal];
   if(type==='core') return g.reps.core+' reps';
   if(type==='compound') return g.reps.compound+' reps';
@@ -1144,17 +1104,14 @@ function generatePlan(){
   const locLabels={gym:'Gym',home_db:'Home — Dumbbells',home_bw:'Bodyweight Only'};
   const lvlLabels={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'};
 
-  // META
   document.getElementById('planTitle').textContent='Your Plan Is Ready';
   document.getElementById('planSubtitle').textContent=`${g.label} · ${locLabels[loc]} · ${lvlLabels[level]} · ${days} Days/Week`;
 
   const metaEl=document.getElementById('planMeta');
   metaEl.innerHTML=[locLabels[loc],lvlLabels[level],days+' Days/Week',g.label].map(t=>`<span class="meta-tag">${t}</span>`).join('');
 
-  // GOAL INTRO
   document.getElementById('goalIntro').innerHTML=`<p>${g.intros[level]}</p>`;
 
-  // TABS + SESSIONS
   const tabsEl=document.getElementById('dayTabs');
   const sessEl=document.getElementById('sessions');
   tabsEl.innerHTML=''; sessEl.innerHTML='';
@@ -1193,18 +1150,13 @@ function buildSession(day,goal,level){
     const cleanName=e.replace(/ \(light\)/,'').replace(/ \(skip if none\)/,'').replace(/^\d+ /,'').trim();
     const link=V[cleanName];
     const uid2='v'+Math.random().toString(36).slice(2,9);
-    const lBtn=link?'<div class="ex-link"><button id="vb-'+uid2+'" onclick="toggleVideo(\''+uid2+'\',\''+link+'\')">▶ Watch</button></div>':'';
+    const lBtn=link?'<div class="ex-link"><button id="vb-'+uid2+'" onclick="toggleVideo(\''+uid2+'\',\''+link+'\')">&#9654; Watch</button></div>':'';
     const vcDiv=link?'<div class="video-container" id="vc-'+uid2+'"></div>':'';
     return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-info"><div class="ex-name">'+e+'</div></div>'+lBtn+'</div>'+vcDiv+'</div>';
-  }).join(''),'');
+  }).join(''),'');;
 
-  // Tri-set A
   html+=buildBlock('💪 Tri-Set A',`${sets} rounds — back to back`,buildExList(day.triA,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
-
-  // Tri-set B
   html+=buildBlock('🔁 Tri-Set B',`${sets} rounds — back to back`,buildExList(day.triB,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
-
-  // Core
   html+=buildBlock('🧠 Core Finisher','2 rounds',buildExList(day.core,goal),'');
 
   return html;
@@ -1215,7 +1167,9 @@ function getYouTubeId(url){
   const m=url.match(/(?:youtu\.be\/|v=|\/v\/|embed\/)([^?&"'>]+)/);
   return m?m[1]:null;
 }
+
 let activeVid=null;
+
 function toggleVideo(uid,url){
   const container=document.getElementById('vc-'+uid);
   const btn=document.getElementById('vb-'+uid);
@@ -1237,34 +1191,43 @@ function toggleVideo(uid,url){
   }
   const ytId=getYouTubeId(url);
   if(!ytId) return;
-  container.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/'+ytId+'?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+  // FIX: no autoplay, playsinline for mobile
+  container.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/'+ytId+'?rel=0&playsinline=1" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen playsinline="1"></iframe></div>';
   container.style.display='block';
   btn.textContent='✕ Close';
   btn.classList.add('vactive');
   activeVid=uid;
   setTimeout(reportHeight,400);
 }
+
 function toggleCooldown(){
   const c=document.getElementById('cooldownVideo');
   const b=document.getElementById('cooldownBtn');
   if(c.style.display==='block'){
     c.style.display='none';c.innerHTML='';b.textContent='▶ Watch';
   } else {
-    c.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/FdUFhUuJl1E?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+    // FIX: standard embed URL, no autoplay, playsinline
+    c.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/FdUFhUuJl1E?rel=0&playsinline=1" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen playsinline="1"></iframe></div>';
     c.style.display='block';b.textContent='✕ Close';
   }
   setTimeout(reportHeight,400);
 }
+
 function buildExList(exercises,goal){
   return exercises.map((ex,i)=>{
     const reps=getReps(ex.type,goal);
     const link=V[ex.name];
     const uid='v'+Math.random().toString(36).slice(2,9);
-    const linkHtml=link?'<div class="ex-link"><button id="vb-'+uid+'" onclick="toggleVideo(\''+uid+'\',\''+link+'\')">▶ Watch</button></div>':'';
+    const linkHtml=link?'<div class="ex-link"><button id="vb-'+uid+'" onclick="toggleVideo(\''+uid+'\',\''+link+'\')">&#9654; Watch</button></div>':'';
     const vcDiv=link?'<div class="video-container" id="vc-'+uid+'"></div>':'';
-    return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-num">'+(i+1)+'</div><div class="ex-info"><div class="ex-name">'+ex.name+'</div><div class="ex-detail">'+ex.sets+' sets · '+reps+'</div></div>'+linkHtml+'</div>'+vcDiv+'</div>';
+    const altName=ALTS[ex.name];
+    const altLink=altName?V[altName]:null;
+    const altUid='v'+Math.random().toString(36).slice(2,9);
+    const altSection=altLink?('<div style="padding:2px 0 6px 32px"><div class="ex-alt-label">Can\'t do this?</div><div class="ex-link"><button class="alt-watch-btn" id="vb-'+altUid+'" onclick="toggleVideo(\''+altUid+'\',\''+altLink+'\')">&#9654; '+altName+'</button></div><div class="video-container" id="vc-'+altUid+'"></div></div>'):'';
+    return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-num">'+(i+1)+'</div><div class="ex-info"><div class="ex-name">'+ex.name+'</div><div class="ex-detail">'+ex.sets+' sets · '+reps+'</div></div>'+linkHtml+'</div>'+vcDiv+altSection+'</div>';
   }).join('');
 }
+
 
 function buildBlock(title,meta,content,footer){
   const id='blk'+Math.random().toString(36).slice(2,7);
@@ -1294,7 +1257,6 @@ function resetPlan(){
   setTimeout(reportHeight,200);
 }
 
-// Height reporting for Notion iframe
 function reportHeight(){
   const h=document.documentElement.scrollHeight;
   window.parent.postMessage({type:'setHeight',height:h},'*');
