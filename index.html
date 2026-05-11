@@ -1,84 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Ultimate Performer — Training Plan</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap');
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --cream:#f0eee7;
-  --steel:#4682b4;
-  --steel-dark:#2d5a8e;
-  --steel-light:rgba(70,130,180,0.1);
-  --dark:#1a1a1a;
-  --mid:#555;
-  --light:#888;
-  --border:#d8d5ce;
-  --white:#ffffff;
-  --green:#27ae60;
-  --amber:#e67e22;
-  --red:#c0392b;
-}
-
-html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(--dark);min-height:100vh;overflow-x:hidden}
 
 .wrap{max-width:720px;margin:0 auto;padding:40px 24px 80px}
 
+/* HEADER */
 .hdr{text-align:center;margin-bottom:48px}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
 .hdr h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,38px);line-height:1.15;margin-bottom:12px}
 .hdr p{font-size:14px;color:var(--mid);line-height:1.6;max-width:460px;margin:0 auto}
 
+/* SELECTOR SCREEN */
 .selector{display:block}
+.selector-done{display:none}
+
 .step-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .step-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:28px;margin-bottom:16px}
 .step-q{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:18px;color:var(--dark)}
-
-.opt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.opt-btn{background:transparent;border:1.5px solid var(--border);border-radius:3px;padding:14px 12px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:var(--dark);cursor:pointer;transition:all .15s ease;text-align:center;line-height:1.3}
-.opt-btn:hover{border-color:var(--steel);color:var(--steel);background:var(--steel-light)}
-.opt-btn.sel{border-color:var(--steel);background:var(--steel);color:var(--white)}
-
-.btn-generate{width:100%;padding:16px;background:var(--dark);color:var(--white);border:none;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s ease;margin-top:8px}
+@@ -51,7 +47,6 @@
 .btn-generate:hover{background:#333}
 .btn-generate:disabled{background:var(--border);color:var(--light);cursor:not-allowed}
 
+/* PLAN SCREEN */
 .plan-screen{display:none}
 .plan-screen.active{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
-.plan-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
-.meta-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--steel-light);color:var(--steel);padding:5px 12px;border-radius:2px}
-
+@@ -62,13 +57,11 @@
 .goal-intro{background:var(--dark);color:var(--white);border-radius:4px;padding:24px 26px;margin-bottom:32px}
 .goal-intro p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.82)}
 
+/* DAY TABS */
 .day-tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
 .day-tab{padding:9px 18px;background:transparent;border:1.5px solid var(--border);border-radius:3px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--light);cursor:pointer;transition:all .15s ease}
 .day-tab:hover{border-color:var(--steel);color:var(--steel)}
 .day-tab.active{border-color:var(--steel);background:var(--steel);color:var(--white)}
 
+/* SESSION CARD */
 .session{display:none}
 .session.active{display:block;animation:fadeUp .25s ease}
 
-.session-hdr{margin-bottom:24px}
-.session-title{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:6px}
-.session-sub{font-size:13px;color:var(--mid)}
-
-.block{background:var(--white);border:1px solid var(--border);border-radius:4px;margin-bottom:14px;overflow:hidden}
-.block-hdr{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
-.block-hdr:hover{background:rgba(0,0,0,.02)}
-.block-name{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--steel)}
-.block-meta{font-size:12px;color:var(--light);font-weight:600}
-.block-chevron{font-size:12px;color:var(--light);transition:transform .2s ease}
+@@ -85,24 +78,26 @@
 .block-chevron.open{transform:rotate(180deg)}
 .block-body{padding:16px 20px;display:none}
 .block-body.open{display:block}
+.block-note{font-size:12px;color:var(--mid);font-style:italic;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 
+/* EXERCISE ROW */
 .ex-num{font-size:11px;font-weight:700;color:var(--light);width:20px;flex-shrink:0}
 .ex-info{flex:1;min-width:0}
 .ex-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:2px}
@@ -90,6 +54,26 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 
 .rest-note{background:#f7f6f2;border-radius:3px;padding:10px 14px;font-size:12px;color:var(--mid);font-weight:600;margin-top:10px;text-align:center;letter-spacing:.04em}
 
+/* COOLDOWN */
+.cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px}
+.cooldown-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cooldown-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
+.cooldown-text{font-size:14px;color:var(--dark);font-weight:500}
+.cooldown-link a{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--white);background:var(--steel);padding:10px 16px;border-radius:3px;text-decoration:none;white-space:nowrap;transition:background .15s ease}
+.cooldown-link a:hover{background:var(--steel-dark)}
+.cooldown-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--white);background:var(--steel);padding:10px 16px;border-radius:3px;white-space:nowrap;transition:background .15s ease;border:none;cursor:pointer;font-family:Montserrat,sans-serif}
+.cooldown-btn:hover{background:var(--steel-dark)}
+.cooldown-video{display:none;padding-top:14px}
+
+/* VIDEO PLAYER */
+.video-container{display:none;padding:12px 0 4px}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:3px;overflow:hidden;background:#000}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+@@ -112,15 +107,7 @@
+.ex-row-wrap{padding:10px 0;border-bottom:1px solid #f0ede6}
+.ex-row-wrap:last-child{border-bottom:none;padding-bottom:0}
+.ex-row-inner{display:flex;align-items:center;gap:12px;width:100%}
 .cooldown-block{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px}
 .cooldown-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .cooldown-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);margin-bottom:4px}
@@ -98,221 +82,112 @@ html,body{background:var(--cream);font-family:'Montserrat',sans-serif;color:var(
 .cooldown-btn:hover{background:var(--steel-dark)}
 .cooldown-video{display:none;padding-top:14px}
 
-.video-container{display:none;padding:12px 0 4px}
-.video-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:3px;overflow:hidden;background:#000}
-.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.ex-link{flex-shrink:0}
-.ex-link button{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--steel);background:var(--steel-light);padding:6px 10px;border-radius:2px;transition:all .15s ease;border:none;cursor:pointer;font-family:Montserrat,sans-serif}
-.ex-link button:hover,.ex-link button.vactive{background:var(--steel);color:var(--white)}
-.ex-row-wrap{padding:10px 0;border-bottom:1px solid #f0ede6}
-.ex-row-wrap:last-child{border-bottom:none;padding-bottom:0}
-.ex-row-inner{display:flex;align-items:center;gap:12px;width:100%}
-
+/* RESET */
 .reset-row{margin-top:32px;text-align:center}
 .btn-reset{background:transparent;border:1.5px solid var(--border);color:var(--light);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:11px 24px;border-radius:3px;cursor:pointer;transition:all .15s ease}
 .btn-reset:hover{border-color:var(--dark);color:var(--dark)}
-
-@media(max-width:480px){
-  .wrap{padding:24px 16px 60px}
-  .opt-grid{grid-template-columns:1fr 1fr}
-  .step-block{padding:20px}
-  .day-tabs{gap:5px}
-  .day-tab{padding:8px 13px;font-size:11px}
-}
-</style>
-</head>
+@@ -137,7 +124,6 @@
 <body>
 <div class="wrap">
 
+<!-- SELECTOR -->
 <div class="selector" id="selectorScreen">
-  <div class="hdr">
-    <div class="eyebrow">The Ultimate Performer</div>
-    <h1>Build Your<br><em>Training Plan</em></h1>
-    <p>Answer 4 questions and your personalised plan is ready instantly — with a video for every exercise.</p>
-  </div>
-
-  <div class="step-block">
-    <div class="step-label">Step 1 of 4</div>
-    <div class="step-q">Where are you <strong>mostly</strong> training?</div>
-    <div class="opt-grid">
-      <button class="opt-btn" data-group="loc" data-val="gym" onclick="pick(this)">🏋️ Gym</button>
-      <button class="opt-btn" data-group="loc" data-val="home_db" onclick="pick(this)">🏠 Home — Dumbbells</button>
-      <button class="opt-btn" data-group="loc" data-val="home_bw" onclick="pick(this)">💪 Home — Bodyweight</button>
-    </div>
-  </div>
-
-  <div class="step-block">
-    <div class="step-label">Step 2 of 4</div>
-    <div class="step-q">What's your current level?</div>
-    <div class="opt-grid">
-      <button class="opt-btn" data-group="level" data-val="beginner" onclick="pick(this)">Beginner</button>
-      <button class="opt-btn" data-group="level" data-val="intermediate" onclick="pick(this)">Intermediate</button>
-      <button class="opt-btn" data-group="level" data-val="advanced" onclick="pick(this)">Advanced</button>
-    </div>
-  </div>
-
-  <div class="step-block">
-    <div class="step-label">Step 3 of 4</div>
-    <div class="step-q">How many days per week can you train?</div>
-    <div class="opt-grid">
-      <button class="opt-btn" data-group="days" data-val="2" onclick="pick(this)">2 Days</button>
-      <button class="opt-btn" data-group="days" data-val="3" onclick="pick(this)">3 Days</button>
-      <button class="opt-btn" data-group="days" data-val="4" onclick="pick(this)">4 Days</button>
-    </div>
-  </div>
-
-  <div class="step-block">
-    <div class="step-label">Step 4 of 4</div>
-    <div class="step-q">What's your main goal?</div>
-    <div class="opt-grid">
-      <button class="opt-btn" data-group="goal" data-val="loss" onclick="pick(this)">⚡ Weight Loss</button>
-      <button class="opt-btn" data-group="goal" data-val="muscle" onclick="pick(this)">💪 Muscle Building</button>
-      <button class="opt-btn" data-group="goal" data-val="health" onclick="pick(this)">🌿 Health & Longevity</button>
-    </div>
-  </div>
-
-  <button class="btn-generate" id="generateBtn" disabled onclick="generatePlan()">Build My Plan →</button>
+<div class="hdr">
+<div class="eyebrow">The Ultimate Performer</div>
+@@ -188,7 +174,6 @@ <h1>Build Your<br><em>Training Plan</em></h1>
+<button class="btn-generate" id="generateBtn" disabled onclick="generatePlan()">Build My Plan →</button>
 </div>
 
+<!-- PLAN -->
 <div class="plan-screen" id="planScreen">
-  <div class="hdr">
-    <div class="eyebrow">Your Training Plan</div>
-    <h1 id="planTitle">Your Plan Is Ready</h1>
-    <p id="planSubtitle"></p>
-  </div>
-  <div class="plan-meta" id="planMeta"></div>
-  <div class="goal-intro" id="goalIntro"></div>
-  <div class="day-tabs" id="dayTabs"></div>
-  <div id="sessions"></div>
-  <div class="cooldown-block">
-    <div class="cooldown-top">
-      <div>
-        <div class="cooldown-label">Every Session — Cooldown</div>
-        <div class="cooldown-text">5 Minute Full Body Stretch</div>
-      </div>
-      <button class="cooldown-btn" id="cooldownBtn" onclick="toggleCooldown()">▶ Watch</button>
-    </div>
-    <div class="cooldown-video" id="cooldownVideo"></div>
-  </div>
-  <div class="reset-row"><button class="btn-reset" onclick="resetPlan()">← Change My Inputs</button></div>
-</div>
-
+<div class="hdr">
+<div class="eyebrow">Your Training Plan</div>
+@@ -215,7 +200,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
 </div>
 
 <script>
+// ─── USER SELECTIONS ────────────────────────────────────────────
 const sel = {loc:null,level:null,days:null,goal:null};
 
 function pick(btn){
-  const g=btn.dataset.group;
-  document.querySelectorAll(`.opt-btn[data-group="${g}"]`).forEach(b=>b.classList.remove('sel'));
-  btn.classList.add('sel');
-  sel[g]=btn.dataset.val;
-  checkReady();
-}
-function checkReady(){
-  document.getElementById('generateBtn').disabled=!(sel.loc&&sel.level&&sel.days&&sel.goal);
+@@ -229,9 +213,9 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+document.getElementById('generateBtn').disabled=!(sel.loc&&sel.level&&sel.days&&sel.goal);
 }
 
+// ─── VIDEO LINKS ────────────────────────────────────────────────
 // ALTERNATIVES MAP
 // VIDEO LINKS
 const V={
-  'Bicycle Crunches':'https://youtu.be/NDeVaEgqyM4',
-  'Hollow Rocks':'https://youtu.be/QpiHM7QW26k',
-  'Hollow Hold':'https://youtu.be/ZmP70qJCmJE',
-  'Leg Raises':'https://youtu.be/zd1P-m_WxWQ',
-  'Flutter Kicks':'https://youtu.be/ZoyvU_6lCUQ',
-  'Heel Taps':'https://youtu.be/ND22rrhdhWU',
-  'Plank Hold':'https://youtu.be/vx08xBP2Mj0',
-  'Plank Jacks':'https://youtu.be/95CVpAyHYkk',
-  'Plank Taps':'https://youtu.be/ZGo88H4TBgY',
-  'Walking Plank':'https://youtu.be/1sUKZtIGEnk',
-  'Side Plank':'https://youtu.be/3fM2ci26hBg',
-  'Side Plank Hip Dips':'https://youtu.be/8kYFi4I7cAg',
-  'Russian Twists':'https://youtu.be/rutqTm-4lR4',
-  'Butterfly Crunches':'https://youtu.be/yJ-YR0KKhhY',
-  'Pilates Sit Up':'https://youtu.be/0gSfp7mKYGw',
-  'DB Weighted Sit Ups':'https://youtu.be/WW73gnPc0-0',
-  'DB Plank Pull Through':'https://youtu.be/jXGVcMimEXw',
-  'Shoulder Taps':'https://youtu.be/bzRSKpYdk6g',
-  'Push Ups':'https://youtu.be/lc3SGox8cV4',
-  'Incline Push Ups':'https://youtu.be/2JGcbJIKM6w',
-  'Hand Release Push Ups':'https://youtu.be/Yc7A2rZf7DA',
-  'Half Burpees':'https://youtu.be/B3Aoj_DCg2I',
-  'Burpees':'https://youtu.be/WIJNqc-R33A',
-  'Dips':'https://youtu.be/eR7rg7QuLVg',
-  'DB Skull Crushers':'https://youtu.be/O8Y_DrbNsYo',
-  'Overhead Extension':'https://youtu.be/-st8MphtMo4',
-  'DB Close Grip Press':'https://youtu.be/RFDOJPZeQ_Q',
-  'DB Floor Press':'https://youtu.be/IX8xB8qWMu8',
-  'DB Single Arm Floor Press':'https://youtu.be/emQCf6yEU3s',
-  'DB Bench Press':'https://youtu.be/LVgNsAjVqjo',
-  'DB Incline Press':'https://youtu.be/AhO-_F7IxSE',
-  'DB Chest Fly':'https://youtu.be/U8RB53E6JVU',
-  'DB Incline Fly':'https://youtu.be/VnlG3wEG9qI',
-  'DB Pullover':'https://youtu.be/Hs2YRxZ2IMM',
-  'DB Seated Shoulder Press':'https://youtu.be/SYBVQQqlTYY',
-  'DB Single Arm Shoulder Press':'https://youtu.be/xX41-zAl8aI',
-  'DB Lateral Raise':'https://youtu.be/JHWCjfvmgvg',
-  'DB Seated Lateral Raise':'https://youtu.be/RV_aFAuZmuA',
-  'DB Front Raise':'https://youtu.be/znYyAEbBEns',
-  'DB Push Press':'https://youtu.be/yzI5Qgt9ezE',
-  'BB Bench Press':'https://youtu.be/Ob6JAaawbMI',
-  'BB Incline Bench Press':'https://youtu.be/DWA61Qi_0y0',
-  'BB Military Press':'https://youtu.be/-hH8K49fhIU',
-  'BB Push Press':'https://youtu.be/YCpfoAGvRYE',
-  'DB Single Arm Row':'https://youtu.be/N-0-7Kluk9E',
-  'DB Bent Over Row':'https://youtu.be/JAkmQciPSK8',
-  'DB Renegade Row w/Push Up':'https://youtu.be/XS5vi6BARbc',
-  'DB Renegade Row':'https://youtu.be/3xPlLwkqZrI',
-  'DB Single Arm Gorilla Row':'https://youtu.be/BagsW8ac3g4',
-  'DB Chest Supported Row':'https://youtu.be/18CUVcCdZPs',
-  'DB Reverse Fly':'https://youtu.be/yFhhBjItgA0',
-  'DB Upright Row':'https://youtu.be/C8vLTmv3_Cw',
-  'DB Alt Bicep Curl':'https://youtu.be/GzO3pfDSI80',
-  'DB Bicep Curls':'https://youtu.be/GdETt4HFQ3Q',
-  'DB Seated Bicep Curls':'https://youtu.be/k3VyLep4gZQ',
-  'DB Hammer Curls':'https://youtu.be/jYQ8peSq2Jc',
-  'DB Concentrated Curl':'https://youtu.be/eg44sKb8DY4',
-  'DB Single Arm Preacher Curl':'https://youtu.be/8S-k29BuPzw',
-  'BB Bent Over Row':'https://youtu.be/TVZd8_LeFfo',
-  'BB Curl':'https://youtu.be/d-H2Z9e0Qyc',
-  'Bodyweight Squat':'https://youtu.be/ef_sL49w7M8',
-  'Jumping Squat':'https://youtu.be/CYNsX2nIi0I',
-  'Pistol Squat':'https://youtu.be/Jmk9ah8hK6I',
-  'Alternating Step Ups':'https://youtu.be/4aKLWcnnl24',
-  'Single Leg Glute Bridge':'https://youtu.be/UVEmU7jMPRw',
-  'DB Goblet Squat':'https://youtu.be/gs3RYDA4xpo',
-  'DB Front Squat':'https://youtu.be/1gXKOOmIcMI',
-  'DB Single Arm Front Squat':'https://youtu.be/ftpmyqIJK0E',
-  'DB Bulgarian Split Squat':'https://youtu.be/lkTWXKctl0o',
-  'DB Alt Lunges':'https://youtu.be/LypumsWyWAg',
-  'DB Reverse Lunges':'https://youtu.be/Ksa9M-1WA1E',
-  'DB Alt Step Ups':'https://youtu.be/6bzupMW5J58',
-  'DB Glute Based Step Ups':'https://youtu.be/E4VTlfl7anM',
-  'DB Single Leg Deadlift':'https://youtu.be/NkONw4gX8O4',
-  'DB Sumo Deadlift':'https://youtu.be/hTdUZrLsZAo',
-  'DB Single Leg Hip Thrust':'https://youtu.be/txmvGmkRHGM',
-  'DB Single Leg Glute Bridge':'https://youtu.be/mE8H3FU4LPs',
-  'DB Hip Thrust':'https://youtu.be/vsbw0veZiBw',
-  'BB Hip Thrust':'https://youtu.be/Pu3kO_5TC-k',
-  'BB Romanian Deadlift':'https://youtu.be/iRxfazIIOdM',
-  'BB Sumo Deadlift':'https://youtu.be/yKkGitOwqoU',
-  'BB Good Mornings':'https://youtu.be/-F7LQVISeQc',
-  'BB Front Squat':'https://youtu.be/x78dn81BwuA',
-  'BB Front Rack Lunge':'https://youtu.be/6wgh8zYemnQ',
-  'BB Reverse Lunges':'https://youtu.be/OF1mNJVI6WU',
-  'BB Back Squat':'https://youtu.be/g9YR-_fgth4',
-  'Walk Outs':'https://youtu.be/HzeIJTEAO4A',
-  'DB External Rotations':'https://youtu.be/zE3OjAxysYM',
-  'DB Swings':'https://youtu.be/OGiKBrRlSMY',
-  'DB Hang Snatch':'https://youtu.be/20-yF9MNeC4',
-  'DB Hang Clean & Press':'https://youtu.be/T0Hbkr-fEcU',
-  'Single Arm Devils Press':'https://youtu.be/EWSb1gCLiao',
-  'KB Swing':'https://youtu.be/21R3iSXx_fA',
-  'BB Hang Clean & Press':'https://youtu.be/M9oA4tvV4_0',
-  'Mountain Climbers':'https://youtu.be/nmwgirgXLYM',
+  // Core
+'Bicycle Crunches':'https://youtu.be/NDeVaEgqyM4',
+'Hollow Rocks':'https://youtu.be/QpiHM7QW26k',
+'Hollow Hold':'https://youtu.be/ZmP70qJCmJE',
+@@ -250,14 +234,12 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'DB Weighted Sit Ups':'https://youtu.be/WW73gnPc0-0',
+'DB Plank Pull Through':'https://youtu.be/jXGVcMimEXw',
+'Shoulder Taps':'https://youtu.be/bzRSKpYdk6g',
+  // Push BW
+'Push Ups':'https://youtu.be/lc3SGox8cV4',
+'Incline Push Ups':'https://youtu.be/2JGcbJIKM6w',
+'Hand Release Push Ups':'https://youtu.be/Yc7A2rZf7DA',
+'Half Burpees':'https://youtu.be/B3Aoj_DCg2I',
+'Burpees':'https://youtu.be/WIJNqc-R33A',
+'Dips':'https://youtu.be/eR7rg7QuLVg',
+  // Push DB
+'DB Skull Crushers':'https://youtu.be/O8Y_DrbNsYo',
+'Overhead Extension':'https://youtu.be/-st8MphtMo4',
+'DB Close Grip Press':'https://youtu.be/RFDOJPZeQ_Q',
+@@ -274,12 +256,10 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'DB Seated Lateral Raise':'https://youtu.be/RV_aFAuZmuA',
+'DB Front Raise':'https://youtu.be/znYyAEbBEns',
+'DB Push Press':'https://youtu.be/yzI5Qgt9ezE',
+  // Push BB
+'BB Bench Press':'https://youtu.be/Ob6JAaawbMI',
+'BB Incline Bench Press':'https://youtu.be/DWA61Qi_0y0',
+'BB Military Press':'https://youtu.be/-hH8K49fhIU',
+'BB Push Press':'https://youtu.be/YCpfoAGvRYE',
+  // Pull DB
+'DB Single Arm Row':'https://youtu.be/N-0-7Kluk9E',
+'DB Bent Over Row':'https://youtu.be/JAkmQciPSK8',
+'DB Renegade Row w/Push Up':'https://youtu.be/XS5vi6BARbc',
+@@ -294,16 +274,13 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'DB Hammer Curls':'https://youtu.be/jYQ8peSq2Jc',
+'DB Concentrated Curl':'https://youtu.be/eg44sKb8DY4',
+'DB Single Arm Preacher Curl':'https://youtu.be/8S-k29BuPzw',
+  // Pull BB
+'BB Bent Over Row':'https://youtu.be/TVZd8_LeFfo',
+'BB Curl':'https://youtu.be/d-H2Z9e0Qyc',
+  // Legs BW
+'Bodyweight Squat':'https://youtu.be/ef_sL49w7M8',
+'Jumping Squat':'https://youtu.be/CYNsX2nIi0I',
+'Pistol Squat':'https://youtu.be/Jmk9ah8hK6I',
+'Alternating Step Ups':'https://youtu.be/4aKLWcnnl24',
+'Single Leg Glute Bridge':'https://youtu.be/UVEmU7jMPRw',
+  // Legs DB
+'DB Goblet Squat':'https://youtu.be/gs3RYDA4xpo',
+'DB Front Squat':'https://youtu.be/1gXKOOmIcMI',
+'DB Single Arm Front Squat':'https://youtu.be/ftpmyqIJK0E',
+@@ -317,7 +294,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'DB Single Leg Hip Thrust':'https://youtu.be/txmvGmkRHGM',
+'DB Single Leg Glute Bridge':'https://youtu.be/mE8H3FU4LPs',
+'DB Hip Thrust':'https://youtu.be/vsbw0veZiBw',
+  // Legs BB
+'BB Hip Thrust':'https://youtu.be/Pu3kO_5TC-k',
+'BB Romanian Deadlift':'https://youtu.be/iRxfazIIOdM',
+'BB Sumo Deadlift':'https://youtu.be/yKkGitOwqoU',
+@@ -326,7 +302,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'BB Front Rack Lunge':'https://youtu.be/6wgh8zYemnQ',
+'BB Reverse Lunges':'https://youtu.be/OF1mNJVI6WU',
+'BB Back Squat':'https://youtu.be/g9YR-_fgth4',
+  // Full Body
+'Walk Outs':'https://youtu.be/HzeIJTEAO4A',
+'DB External Rotations':'https://youtu.be/zE3OjAxysYM',
+'DB Swings':'https://youtu.be/OGiKBrRlSMY',
+@@ -338,7 +313,32 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+'Mountain Climbers':'https://youtu.be/nmwgirgXLYM',
 };
 
+// ─── GOAL CONFIG ────────────────────────────────────────────────
 const ALTS={
   // BB → DB alternatives
   'BB Bench Press':'DB Bench Press',
@@ -340,930 +215,236 @@ const ALTS={
 };
 
 const GOALS={
-  loss:{
-    label:'Weight Loss',
-    intros:{
-      beginner:"Your goal is weight loss and you're just getting started — that's actually the best position to be in because everything you do from here will work. Your plan is built around higher rep ranges that keep your heart rate up, shorter rest periods to maximise calorie burn, and full body movements that hit as many muscle groups as possible. Don't skip sessions. Consistency over 8–12 weeks is what creates real change, not intensity in week one.",
-      intermediate:"You've trained before, you know the basics — now we're building a plan that actually matches your goal. Higher reps, tighter rest periods, and compound movements that drive your heart rate up while building lean muscle. The combination of resistance training and elevated effort is far more effective for fat loss than cardio alone. Trust the process and stay consistent.",
-      advanced:"You know what you're doing, which means you know that fat loss comes down to consistency, intensity, and progressive overload — not complicated programming. Your plan pushes rep ranges and keeps rest tight so you're working at a high output every session. Track your weights, push for progression week on week, and make sure your nutrition is backing up the work you're doing in here."
-    },
-    reps:{compound:'12–15',isolation:'15–18',core:'20'},
-    rest:'45 seconds rest between tri-sets'
-  },
-  muscle:{
-    label:'Muscle Building',
-    intros:{
-      beginner:"Your goal is muscle building and you're starting from scratch — which means you're going to see significant results faster than someone who's been training for years. Your plan uses moderate rep ranges with controlled tempo, focusing on learning the movements properly and building your foundation. Don't rush the weights up. Good form with a challenging load beats sloppy form with a heavy load every time.",
-      intermediate:"You're building on an existing base, which means your body needs proper stimulus to keep growing. Your plan is built around the 8–12 rep range — the sweet spot for hypertrophy — with full 60 seconds rest to allow enough recovery for quality sets. Progressive overload is the key: if it felt easy last week, add weight this week.",
-      advanced:"You know how to train for muscle. Your plan uses lower rep ranges with heavier loads, genuine progressive overload, and a push/pull/legs split that allows proper recovery between sessions. Every tri-set is built around a compound anchor movement. Track your lifts every session — if you're not beating last week on at least one exercise, something needs to change."
-    },
-    reps:{compound:'8–10',isolation:'10–12',core:'15'},
-    rest:'60 seconds rest between tri-sets'
-  },
-  health:{
-    label:'Health & Longevity',
-    intros:{
-      beginner:"Your goal is to feel better, move better, and build a foundation that keeps paying dividends for decades — not just the next 12 weeks. Your plan balances strength, mobility, and cardiovascular fitness at a pace that's genuinely sustainable. You'll be sore in the right ways and never destroyed. Focus on how you feel after each session, not just what you lifted.",
-      intermediate:"You're not here to compete, you're here to perform well across everything — work, life, energy, clarity. Your plan is built around movements that carry over to real life, with enough variety to stay interesting and enough structure to actually progress. Moderate reps, full rest, compound focus. The aim is to build a body that works well for a long time.",
-      advanced:"You've got the discipline, now let's make sure you're training smart not just hard. Your plan balances strength work with movement quality — heavier compound lifts paired with accessory work that addresses weak points and keeps joints healthy. Longevity means not grinding yourself into the ground every session. Challenging, yes. Sustainable, absolutely."
-    },
-    reps:{compound:'10–12',isolation:'12–15',core:'15–20'},
-    rest:'60 seconds rest between tri-sets'
-  }
+loss:{
+label:'Weight Loss',
+@@ -372,19 +372,9 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+}
 };
+
+// ─── PLAN DATA ────────────────────────────────────────────────────
+// Each plan: array of days. Each day: {name, type, warmup[], triA[], triB[], core[]}
+// Exercise format: {name, sets, reps} — reps can be a key 'compound'|'isolation'|'core' or a fixed string
 
 function R(name,type,sets){return{name,type,sets};}
+// type: 'compound','isolation','core','fixed:X'
 
 const PLANS={
+
+// ══════════════════════════════════════════════════════
+// GYM PLANS
+// ══════════════════════════════════════════════════════
+
 gym_2:{
-  beginner:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise'],
-     triA:[R('BB Bench Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Single Arm Row','compound',3),R('DB Reverse Fly','isolation',3),R('DB Bicep Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Bicep Curls.',
-     core:[R('Plank Hold','core',2),R('Shoulder Taps','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Alt Lunges'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Reverse Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Lateral Raise'],
-     triA:[R('BB Bench Press','compound',3),R('DB Incline Press','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('BB Bent Over Row','compound',3),R('DB Single Arm Row','compound',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('DB Weighted Sit Ups','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('BB Back Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('BB Romanian Deadlift','compound',3),R('DB Single Leg Deadlift','compound',3),R('BB Hip Thrust','compound',3)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Russian Twists','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 BB Military Press (light)'],
-     triA:[R('BB Bench Press','compound',4),R('BB Incline Bench Press','compound',4),R('DB Chest Fly','isolation',4)],
-     triANote:'Back to back. Rest after Chest Fly.',
-     triB:[R('BB Bent Over Row','compound',4),R('DB Renegade Row w/Push Up','compound',4),R('DB Concentrated Curl','isolation',4)],
-     triBNote:'Back to back. Rest after Concentrated Curl.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 BB Good Mornings (light)','10 DB Reverse Lunges'],
-     triA:[R('BB Back Squat','compound',4),R('BB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4)],
-     triANote:'Back to back. Rest after Bulgarian Split Squat.',
-     triB:[R('BB Romanian Deadlift','compound',4),R('BB Sumo Deadlift','compound',4),R('BB Hip Thrust','compound',4)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Upper Body',type:'upper',
+@@ -435,7 +425,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
+]
 },
+
 gym_3:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise (light)'],
-     triA:[R('DB Floor Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('DB Front Raise','isolation',3)],
-     triBNote:'Back to back. Rest after Front Raise.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3),R('DB Alt Bicep Curl','isolation',3)],
-     triBNote:'Back to back. Rest after Alt Bicep Curl.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Alt Lunges (light)'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Alt Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Hip Thrust','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Plank Taps','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Lateral Raise'],
-     triA:[R('BB Bench Press','compound',3),R('DB Incline Fly','isolation',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('DB Push Press','compound',3)],
-     triBNote:'Back to back. Rest after Push Press.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('BB Bent Over Row','compound',3),R('DB Single Arm Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row','compound',3),R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('BB Back Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('BB Romanian Deadlift','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 BB Military Press (light)'],
-     triA:[R('BB Bench Press','compound',4),R('DB Incline Press','compound',4),R('DB Chest Fly','isolation',4)],
-     triANote:'Back to back. Rest after Chest Fly.',
-     triB:[R('BB Military Press','compound',4),R('DB Lateral Raise','isolation',4),R('DB Skull Crushers','isolation',4)],
-     triBNote:'Back to back. Rest after Skull Crushers.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Walking Plank','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 BB Bent Over Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('BB Bent Over Row','compound',4),R('DB Single Arm Gorilla Row','compound',4),R('DB Chest Supported Row','compound',4)],
-     triANote:'Back to back. Rest after Chest Supported Row.',
-     triB:[R('DB Renegade Row w/Push Up','compound',4),R('DB Single Arm Preacher Curl','isolation',4),R('BB Curl','isolation',4)],
-     triBNote:'Back to back. Rest after BB Curl.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 BB Good Mornings (light)','10 DB Bulgarian Split Squat (light)'],
-     triA:[R('BB Back Squat','compound',4),R('BB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4)],
-     triANote:'Back to back. Rest after Bulgarian Split Squat.',
-     triB:[R('BB Romanian Deadlift','compound',4),R('BB Sumo Deadlift','compound',4),R('BB Hip Thrust','compound',4)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2),R('Hollow Hold','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -507,7 +496,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2),R('Hollow Hold','core',2)]}
+]
 },
+
 gym_4:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise (light)'],
-     triA:[R('DB Floor Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('Overhead Extension','isolation',3)],
-     triBNote:'Back to back. Rest after Overhead Extension.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3),R('DB Upright Row','compound',3)],
-     triBNote:'Back to back. Rest after Upright Row.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Alt Lunges (light)'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Alt Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Hip Thrust','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('DB Swings','compound',3),R('DB Goblet Squat','compound',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Hang Clean & Press','compound',3),R('Burpees','compound',3),R('DB Single Arm Row','compound',3)],
-     triBNote:'Back to back. Rest after Single Arm Row.',
-     core:[R('Plank Jacks','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Lateral Raise'],
-     triA:[R('BB Bench Press','compound',3),R('DB Incline Press','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('DB Push Press','compound',3)],
-     triBNote:'Back to back. Rest after Push Press.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('BB Bent Over Row','compound',3),R('DB Single Arm Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row','compound',3),R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('BB Back Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('BB Romanian Deadlift','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('DB Hang Snatch','compound',3),R('DB Swings','compound',3),R('Half Burpees','compound',3)],
-     triANote:'Back to back. Rest after Half Burpees.',
-     triB:[R('DB Hang Clean & Press','compound',3),R('DB Single Arm Gorilla Row','compound',3),R('Jumping Squat','compound',3)],
-     triBNote:'Back to back. Rest after Jumping Squat.',
-     core:[R('Plank Jacks','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 BB Military Press (light)'],
-     triA:[R('BB Bench Press','compound',4),R('BB Incline Bench Press','compound',4),R('DB Chest Fly','isolation',4)],
-     triANote:'Back to back. Rest after Chest Fly.',
-     triB:[R('BB Military Press','compound',4),R('DB Lateral Raise','isolation',4),R('DB Skull Crushers','isolation',4)],
-     triBNote:'Back to back. Rest after Skull Crushers.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Walking Plank','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 BB Bent Over Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('BB Bent Over Row','compound',4),R('DB Single Arm Gorilla Row','compound',4),R('DB Chest Supported Row','compound',4)],
-     triANote:'Back to back. Rest after Chest Supported Row.',
-     triB:[R('DB Renegade Row w/Push Up','compound',4),R('DB Single Arm Preacher Curl','isolation',4),R('BB Curl','isolation',4)],
-     triBNote:'Back to back. Rest after BB Curl.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 BB Good Mornings (light)','10 DB Bulgarian Split Squat (light)'],
-     triA:[R('BB Back Squat','compound',4),R('BB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4)],
-     triANote:'Back to back. Rest after Bulgarian Split Squat.',
-     triB:[R('BB Romanian Deadlift','compound',4),R('BB Sumo Deadlift','compound',4),R('BB Hip Thrust','compound',4)],
-     triBNote:'Back to back. Rest after Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('BB Hang Clean & Press','compound',4),R('DB Hang Snatch','compound',4),R('Burpees','compound',4)],
-     triANote:'Back to back. Rest after Burpees.',
-     triB:[R('Single Arm Devils Press','compound',4),R('DB Swings','compound',4),R('Jumping Squat','compound',4)],
-     triBNote:'Back to back. Rest after Jumping Squat.',
-     core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -600,11 +588,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
+]
 },
+
+// ══════════════════════════════════════════════════════
+// HOME — DUMBBELLS
+// ══════════════════════════════════════════════════════
+
 home_db_2:{
-  beginner:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise (light)'],
-     triA:[R('DB Floor Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Single Arm Row','compound',3),R('DB Reverse Fly','isolation',3),R('DB Bicep Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Bicep Curls.',
-     core:[R('Plank Hold','core',2),R('Shoulder Taps','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges (light)'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Alt Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Hip Thrust','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 DB Floor Press (light)','10 DB Lateral Raise'],
-     triA:[R('DB Bench Press','compound',3),R('DB Incline Press','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Single Arm Row','compound',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('DB Weighted Sit Ups','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3),R('DB Single Leg Hip Thrust','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Russian Twists','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Push Press (light)'],
-     triA:[R('DB Bench Press','compound',4),R('DB Incline Press','compound',4),R('DB Incline Fly','isolation',4)],
-     triANote:'Back to back. Rest after Incline Fly.',
-     triB:[R('DB Single Arm Gorilla Row','compound',4),R('DB Chest Supported Row','compound',4),R('DB Concentrated Curl','isolation',4)],
-     triBNote:'Back to back. Rest after Concentrated Curl.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 DB Single Leg Deadlift (light)','10 DB Bulgarian Split Squat (light)'],
-     triA:[R('DB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4),R('DB Glute Based Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('DB Single Leg Deadlift','compound',4),R('DB Hip Thrust','compound',4),R('DB Single Leg Hip Thrust','isolation',4)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Upper Body',type:'upper',
+@@ -655,7 +638,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]}
+]
 },
+
 home_db_3:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise (light)'],
-     triA:[R('DB Floor Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('Overhead Extension','isolation',3)],
-     triBNote:'Back to back. Rest after Overhead Extension.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3),R('DB Alt Bicep Curl','isolation',3)],
-     triBNote:'Back to back. Rest after Alt Bicep Curl.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Alt Lunges (light)'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Alt Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Hip Thrust','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Plank Taps','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Floor Press (light)','10 DB Lateral Raise'],
-     triA:[R('DB Bench Press','compound',3),R('DB Incline Press','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('DB Push Press','compound',3)],
-     triBNote:'Back to back. Rest after Push Press.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Gorilla Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row','compound',3),R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3),R('DB Single Leg Hip Thrust','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Push Press (light)'],
-     triA:[R('DB Bench Press','compound',4),R('DB Incline Press','compound',4),R('DB Incline Fly','isolation',4)],
-     triANote:'Back to back. Rest after Incline Fly.',
-     triB:[R('DB Single Arm Shoulder Press','compound',4),R('DB Lateral Raise','isolation',4),R('DB Skull Crushers','isolation',4)],
-     triBNote:'Back to back. Rest after Skull Crushers.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Walking Plank','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Bent Over Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Gorilla Row','compound',4),R('DB Chest Supported Row','compound',4),R('DB Reverse Fly','isolation',4)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row w/Push Up','compound',4),R('DB Concentrated Curl','isolation',4),R('DB Single Arm Preacher Curl','isolation',4)],
-     triBNote:'Back to back. Rest after Preacher Curl.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 DB Single Leg Deadlift (light)','10 DB Bulgarian Split Squat (light)'],
-     triA:[R('DB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4),R('DB Glute Based Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('DB Single Leg Deadlift','compound',4),R('DB Hip Thrust','compound',4),R('DB Single Leg Hip Thrust','isolation',4)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Hollow Hold','core',2),R('Side Plank Hip Dips','core',2),R('Leg Raises','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -727,7 +709,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Hold','core',2),R('Side Plank Hip Dips','core',2),R('Leg Raises','core',2)]}
+]
 },
+
 home_db_4:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 Incline Push Ups','10 DB Lateral Raise (light)'],
-     triA:[R('DB Floor Press','compound',3),R('DB Chest Fly','isolation',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('Overhead Extension','isolation',3)],
-     triBNote:'Back to back. Rest after Overhead Extension.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3),R('DB Upright Row','compound',3)],
-     triBNote:'Back to back. Rest after Upright Row.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Alt Lunges (light)'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Alt Lunges','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Hip Thrust','compound',3),R('DB Single Leg Deadlift','compound',3),R('DB Single Leg Glute Bridge','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Glute Bridge.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('DB Swings','compound',3),R('DB Goblet Squat','compound',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('DB Hang Clean & Press','compound',3),R('DB Single Arm Row','compound',3),R('Half Burpees','compound',3)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Plank Jacks','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Floor Press (light)','10 DB Lateral Raise'],
-     triA:[R('DB Bench Press','compound',3),R('DB Incline Press','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('DB Seated Shoulder Press','compound',3),R('DB Lateral Raise','isolation',3),R('DB Push Press','compound',3)],
-     triBNote:'Back to back. Rest after Push Press.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Single Arm Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Gorilla Row','compound',3),R('DB Bent Over Row','compound',3),R('DB Reverse Fly','isolation',3)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row','compound',3),R('DB Bicep Curls','isolation',3),R('DB Hammer Curls','isolation',3)],
-     triBNote:'Back to back. Rest after Hammer Curls.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 DB Reverse Lunges'],
-     triA:[R('DB Goblet Squat','compound',3),R('DB Bulgarian Split Squat','compound',3),R('DB Sumo Deadlift','compound',3)],
-     triANote:'Back to back. Rest after Sumo Deadlift.',
-     triB:[R('DB Single Leg Deadlift','compound',3),R('DB Hip Thrust','compound',3),R('DB Single Leg Hip Thrust','isolation',3)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('DB Hang Snatch','compound',3),R('DB Swings','compound',3),R('Half Burpees','compound',3)],
-     triANote:'Back to back. Rest after Half Burpees.',
-     triB:[R('DB Hang Clean & Press','compound',3),R('Single Arm Devils Press','compound',3),R('Jumping Squat','compound',3)],
-     triBNote:'Back to back. Rest after Jumping Squat.',
-     core:[R('Plank Jacks','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 DB External Rotations','10 DB Bench Press (light)','10 DB Push Press (light)'],
-     triA:[R('DB Bench Press','compound',4),R('DB Incline Press','compound',4),R('DB Incline Fly','isolation',4)],
-     triANote:'Back to back. Rest after Incline Fly.',
-     triB:[R('DB Single Arm Shoulder Press','compound',4),R('DB Lateral Raise','isolation',4),R('DB Skull Crushers','isolation',4)],
-     triBNote:'Back to back. Rest after Skull Crushers.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Walking Plank','core',2)]},
-    {name:'Day 2 — Pull',type:'pull',
-     warmup:['10 DB External Rotations','10 DB Bent Over Row (light)','10 DB Reverse Fly (light)'],
-     triA:[R('DB Single Arm Gorilla Row','compound',4),R('DB Chest Supported Row','compound',4),R('DB Reverse Fly','isolation',4)],
-     triANote:'Back to back. Rest after Reverse Fly.',
-     triB:[R('DB Renegade Row w/Push Up','compound',4),R('DB Concentrated Curl','isolation',4),R('DB Single Arm Preacher Curl','isolation',4)],
-     triBNote:'Back to back. Rest after Preacher Curl.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 DB Single Leg Deadlift (light)','10 DB Bulgarian Split Squat (light)'],
-     triA:[R('DB Front Squat','compound',4),R('DB Bulgarian Split Squat','compound',4),R('DB Glute Based Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('DB Single Leg Deadlift','compound',4),R('DB Hip Thrust','compound',4),R('DB Single Leg Hip Thrust','isolation',4)],
-     triBNote:'Back to back. Rest after Single Leg Hip Thrust.',
-     core:[R('Hollow Hold','core',2),R('Side Plank Hip Dips','core',2),R('Leg Raises','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Single Arm Devils Press','compound',4),R('DB Hang Snatch','compound',4),R('Burpees','compound',4)],
-     triANote:'Back to back. Rest after Burpees.',
-     triB:[R('DB Hang Clean & Press','compound',4),R('DB Swings','compound',4),R('Jumping Squat','compound',4)],
-     triBNote:'Back to back. Rest after Jumping Squat.',
-     core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -820,11 +801,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Rocks','core',2),R('Plank Jacks','core',2),R('Flutter Kicks','core',2)]}
+]
 },
+
+// ══════════════════════════════════════════════════════
+// BODYWEIGHT — PPL
+// ══════════════════════════════════════════════════════
+
 home_bw_2:{
-  beginner:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 DB External Rotations (skip if none)','10 Incline Push Ups','10 Shoulder Taps'],
-     triA:[R('Incline Push Ups','compound',3),R('Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Plank Taps','compound',3),R('Walking Plank','compound',3),R('Shoulder Taps','isolation',3)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Butterfly Crunches','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Bodyweight Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Jumping Squat','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 Incline Push Ups','10 Shoulder Taps','10 Walk Outs'],
-     triA:[R('Push Ups','compound',3),R('Hand Release Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Shoulder Taps','isolation',3)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Pilates Sit Up','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Jumping Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Burpees','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Flutter Kicks','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Upper Body',type:'upper',
-     warmup:['10 Incline Push Ups','10 Walk Outs','10 Shoulder Taps'],
-     triA:[R('Hand Release Push Ups','compound',4),R('Push Ups','compound',4),R('Dips','compound',4)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',4),R('Plank Jacks','compound',4),R('Shoulder Taps','isolation',4)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Hollow Rocks','core',2),R('Plank Hold','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Lower Body',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Pistol Squat','compound',4),R('Jumping Squat','compound',4),R('Alternating Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('Burpees','compound',4),R('Single Leg Glute Bridge','compound',4),R('Walk Outs','compound',4)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Upper Body',type:'upper',
+@@ -875,7 +851,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
+]
 },
+
 home_bw_3:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Shoulder Taps','10 Walk Outs'],
-     triA:[R('Incline Push Ups','compound',3),R('Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Half Burpees','compound',3)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Shoulder Taps','compound',3)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Walk Outs','compound',3),R('Butterfly Crunches','compound',3),R('Pilates Sit Up','compound',3)],
-     triBNote:'Back to back. Rest after Pilates Sit Up.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Bodyweight Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Jumping Squat','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Plank Taps','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Shoulder Taps','10 Walk Outs'],
-     triA:[R('Push Ups','compound',3),R('Hand Release Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',3),R('Plank Jacks','compound',3),R('Half Burpees','compound',3)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Shoulder Taps','compound',3)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Burpees','compound',3),R('Walk Outs','compound',3),R('Pilates Sit Up','compound',3)],
-     triBNote:'Back to back. Rest after Pilates Sit Up.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Jumping Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Burpees','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Walk Outs','10 Shoulder Taps'],
-     triA:[R('Hand Release Push Ups','compound',4),R('Push Ups','compound',4),R('Dips','compound',4)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',4),R('Plank Jacks','compound',4),R('Burpees','compound',4)],
-     triBNote:'Back to back. Rest after Burpees.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',4),R('Plank Jacks','compound',4),R('Shoulder Taps','compound',4)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Burpees','compound',4),R('Walk Outs','compound',4),R('Half Burpees','compound',4)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Pistol Squat','compound',4),R('Jumping Squat','compound',4),R('Alternating Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('Burpees','compound',4),R('Single Leg Glute Bridge','compound',4),R('Walk Outs','compound',4)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -947,7 +922,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]}
+]
 },
+
 home_bw_4:{
-  beginner:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Shoulder Taps','10 Walk Outs'],
-     triA:[R('Incline Push Ups','compound',3),R('Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Half Burpees','compound',3)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Shoulder Taps','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Shoulder Taps','compound',3)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Walk Outs','compound',3),R('Butterfly Crunches','compound',3),R('Pilates Sit Up','compound',3)],
-     triBNote:'Back to back. Rest after Pilates Sit Up.',
-     core:[R('Bicycle Crunches','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Bodyweight Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Jumping Squat','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',3),R('Jumping Squat','compound',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('Half Burpees','compound',3),R('Walk Outs','compound',3),R('Plank Jacks','compound',3)],
-     triBNote:'Back to back. Rest after Plank Jacks.',
-     core:[R('Hollow Hold','core',2),R('Flutter Kicks','core',2),R('Leg Raises','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Shoulder Taps','10 Walk Outs'],
-     triA:[R('Push Ups','compound',3),R('Hand Release Push Ups','compound',3),R('Dips','compound',3)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',3),R('Plank Jacks','compound',3),R('Half Burpees','compound',3)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Bicycle Crunches','core',2),R('Plank Hold','core',2),R('Heel Taps','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',3),R('Plank Taps','compound',3),R('Shoulder Taps','compound',3)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Burpees','compound',3),R('Walk Outs','compound',3),R('Pilates Sit Up','compound',3)],
-     triBNote:'Back to back. Rest after Pilates Sit Up.',
-     core:[R('Russian Twists','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Jumping Squat','compound',3),R('Alternating Step Ups','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Burpees','compound',3),R('Half Burpees','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Leg Raises','core',2),R('Heel Taps','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',3),R('Jumping Squat','compound',3),R('Push Ups','compound',3)],
-     triANote:'Back to back. Rest after Push Ups.',
-     triB:[R('Half Burpees','compound',3),R('Walk Outs','compound',3),R('Plank Jacks','compound',3)],
-     triBNote:'Back to back. Rest after Plank Jacks.',
-     core:[R('Hollow Hold','core',2),R('Flutter Kicks','core',2),R('Leg Raises','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Push',type:'push',
-     warmup:['10 Incline Push Ups','10 Walk Outs','10 Shoulder Taps'],
-     triA:[R('Hand Release Push Ups','compound',4),R('Push Ups','compound',4),R('Dips','compound',4)],
-     triANote:'Back to back. Rest after Dips.',
-     triB:[R('Walking Plank','compound',4),R('Plank Jacks','compound',4),R('Burpees','compound',4)],
-     triBNote:'Back to back. Rest after Burpees.',
-     core:[R('Hollow Rocks','core',2),R('DB Plank Pull Through','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Pull & Core',type:'pull',
-     warmup:['10 Walk Outs','10 Shoulder Taps','20 Mountain Climbers'],
-     triA:[R('Walking Plank','compound',4),R('Plank Jacks','compound',4),R('Shoulder Taps','compound',4)],
-     triANote:'Back to back. Rest after Shoulder Taps.',
-     triB:[R('Burpees','compound',4),R('Walk Outs','compound',4),R('Half Burpees','compound',4)],
-     triBNote:'Back to back. Rest after Half Burpees.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Legs',type:'legs',
-     warmup:['10 Bodyweight Squats','10 Single Leg Glute Bridge','10 Alternating Step Ups'],
-     triA:[R('Pistol Squat','compound',4),R('Jumping Squat','compound',4),R('Alternating Step Ups','compound',4)],
-     triANote:'Back to back. Rest after Step Ups.',
-     triB:[R('Burpees','compound',4),R('Single Leg Glute Bridge','compound',4),R('Walk Outs','compound',4)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Hollow Hold','core',2),R('Leg Raises','core',2),R('Flutter Kicks','core',2)]},
-    {name:'Day 4 — Full Body Conditioning',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',4),R('Jumping Squat','compound',4),R('Hand Release Push Ups','compound',4)],
-     triANote:'Back to back. Rest after Hand Release Push Ups.',
-     triB:[R('Half Burpees','compound',4),R('Pistol Squat','compound',4),R('Plank Jacks','compound',4)],
-     triBNote:'Back to back. Rest after Plank Jacks.',
-     core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Push',type:'push',
+@@ -1040,11 +1014,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
+]
 },
+
+// ══════════════════════════════════════════════════════
+// BODYWEIGHT — FULL BODY CONDITIONING (3 days)
+// ══════════════════════════════════════════════════════
+
 home_bw_cond_3:{
-  beginner:[
-    {name:'Day 1 — Full Body A',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Push Ups','compound',3),R('Bodyweight Squat','compound',3),R('Single Leg Glute Bridge','compound',3)],
-     triANote:'Back to back. Rest after Glute Bridge.',
-     triB:[R('Half Burpees','compound',3),R('Alternating Step Ups','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Plank Hold','core',2),R('Heel Taps','core',2),R('Bicycle Crunches','core',2)]},
-    {name:'Day 2 — Full Body B',type:'conditioning',
-     warmup:['5 Walk Outs','10 Incline Push Ups','10 Single Leg Glute Bridge'],
-     triA:[R('Incline Push Ups','compound',3),R('Jumping Squat','compound',3),R('Plank Taps','compound',3)],
-     triANote:'Back to back. Rest after Plank Taps.',
-     triB:[R('Dips','compound',3),R('Single Leg Glute Bridge','compound',3),R('Walking Plank','compound',3)],
-     triBNote:'Back to back. Rest after Walking Plank.',
-     core:[R('Leg Raises','core',2),R('Flutter Kicks','core',2),R('Side Plank','core',2)]},
-    {name:'Day 3 — Full Body C',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Push Ups','compound',3),R('Alternating Step Ups','compound',3),R('Walk Outs','compound',3)],
-     triANote:'Back to back. Rest after Walk Outs.',
-     triB:[R('Half Burpees','compound',3),R('Single Leg Glute Bridge','compound',3),R('Shoulder Taps','compound',3)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Butterfly Crunches','core',2),R('Pilates Sit Up','core',2),R('Plank Hold','core',2)]}
-  ],
-  intermediate:[
-    {name:'Day 1 — Full Body A',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Push Ups','compound',3),R('Jumping Squat','compound',3),R('Walking Plank','compound',3)],
-     triANote:'Back to back. Rest after Walking Plank.',
-     triB:[R('Burpees','compound',3),R('Single Leg Glute Bridge','compound',3),R('Walk Outs','compound',3)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Bicycle Crunches','core',2),R('Hollow Hold','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Full Body B',type:'conditioning',
-     warmup:['5 Walk Outs','10 Incline Push Ups','10 Single Leg Glute Bridge'],
-     triA:[R('Hand Release Push Ups','compound',3),R('Jumping Squat','compound',3),R('Plank Jacks','compound',3)],
-     triANote:'Back to back. Rest after Plank Jacks.',
-     triB:[R('Dips','compound',3),R('Alternating Step Ups','compound',3),R('Shoulder Taps','compound',3)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Leg Raises','core',2),R('Flutter Kicks','core',2),R('Hollow Hold','core',2)]},
-    {name:'Day 3 — Full Body C',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',3),R('Push Ups','compound',3),R('Walk Outs','compound',3)],
-     triANote:'Back to back. Rest after Walk Outs.',
-     triB:[R('Half Burpees','compound',3),R('Single Leg Glute Bridge','compound',3),R('Walking Plank','compound',3)],
-     triBNote:'Back to back. Rest after Walking Plank.',
-     core:[R('Russian Twists','core',2),R('Pilates Sit Up','core',2),R('Side Plank Hip Dips','core',2)]}
-  ],
-  advanced:[
-    {name:'Day 1 — Full Body A',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',4),R('Pistol Squat','compound',4),R('Hand Release Push Ups','compound',4)],
-     triANote:'Back to back. Rest after Hand Release Push Ups.',
-     triB:[R('Jumping Squat','compound',4),R('Walking Plank','compound',4),R('Walk Outs','compound',4)],
-     triBNote:'Back to back. Rest after Walk Outs.',
-     core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]},
-    {name:'Day 2 — Full Body B',type:'conditioning',
-     warmup:['5 Walk Outs','10 Incline Push Ups','10 Single Leg Glute Bridge'],
-     triA:[R('Hand Release Push Ups','compound',4),R('Jumping Squat','compound',4),R('Plank Jacks','compound',4)],
-     triANote:'Back to back. Rest after Plank Jacks.',
-     triB:[R('Dips','compound',4),R('Pistol Squat','compound',4),R('Shoulder Taps','compound',4)],
-     triBNote:'Back to back. Rest after Shoulder Taps.',
-     core:[R('Hollow Hold','core',2),R('Flutter Kicks','core',2),R('Russian Twists','core',2)]},
-    {name:'Day 3 — Full Body C',type:'conditioning',
-     warmup:['5 Walk Outs','10 Bodyweight Squats','20 Mountain Climbers'],
-     triA:[R('Burpees','compound',4),R('Push Ups','compound',4),R('Pistol Squat','compound',4)],
-     triANote:'Back to back. Rest after Pistol Squat.',
-     triB:[R('Half Burpees','compound',4),R('Single Leg Glute Bridge','compound',4),R('Walking Plank','compound',4)],
-     triBNote:'Back to back. Rest after Walking Plank.',
-     core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
-  ]
+beginner:[
+{name:'Day 1 — Full Body A',type:'conditioning',
+@@ -1116,18 +1085,9 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+core:[R('Hollow Rocks','core',2),R('Leg Raises','core',2),R('Side Plank Hip Dips','core',2)]}
+]
 }
 };
 
+}; // end PLANS
+
+// ─── GENERATE ────────────────────────────────────────────────────
+function getPlanKey(){
+  const {loc,days}=sel;
+  // Special case: bodyweight conditioning 3-day shown as extra option
+  if(loc==='home_bw'&&days==='3'&&sel._bwMode==='cond') return 'home_bw_cond_3';
+  return `${loc}_${days}`;
+}
+
+function getReps(type,goal,level){
 function getReps(type,goal){
-  const g=GOALS[goal];
-  if(type==='core') return g.reps.core+' reps';
-  if(type==='compound') return g.reps.compound+' reps';
-  return g.reps.isolation+' reps';
-}
+const g=GOALS[goal];
+if(type==='core') return g.reps.core+' reps';
+if(type==='compound') return g.reps.compound+' reps';
+@@ -1144,17 +1104,14 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+const locLabels={gym:'Gym',home_db:'Home — Dumbbells',home_bw:'Bodyweight Only'};
+const lvlLabels={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'};
 
-function generatePlan(){
-  const {loc,level,days,goal}=sel;
-  const key=`${loc}_${days}`;
-  const planDays=PLANS[key]?.[level];
-  if(!planDays){alert('Plan not found — please try different options.');return;}
+  // META
+document.getElementById('planTitle').textContent='Your Plan Is Ready';
+document.getElementById('planSubtitle').textContent=`${g.label} · ${locLabels[loc]} · ${lvlLabels[level]} · ${days} Days/Week`;
 
-  const g=GOALS[goal];
-  const locLabels={gym:'Gym',home_db:'Home — Dumbbells',home_bw:'Bodyweight Only'};
-  const lvlLabels={beginner:'Beginner',intermediate:'Intermediate',advanced:'Advanced'};
+const metaEl=document.getElementById('planMeta');
+metaEl.innerHTML=[locLabels[loc],lvlLabels[level],days+' Days/Week',g.label].map(t=>`<span class="meta-tag">${t}</span>`).join('');
 
-  document.getElementById('planTitle').textContent='Your Plan Is Ready';
-  document.getElementById('planSubtitle').textContent=`${g.label} · ${locLabels[loc]} · ${lvlLabels[level]} · ${days} Days/Week`;
+  // GOAL INTRO
+document.getElementById('goalIntro').innerHTML=`<p>${g.intros[level]}</p>`;
 
-  const metaEl=document.getElementById('planMeta');
-  metaEl.innerHTML=[locLabels[loc],lvlLabels[level],days+' Days/Week',g.label].map(t=>`<span class="meta-tag">${t}</span>`).join('');
-
-  document.getElementById('goalIntro').innerHTML=`<p>${g.intros[level]}</p>`;
-
-  const tabsEl=document.getElementById('dayTabs');
-  const sessEl=document.getElementById('sessions');
-  tabsEl.innerHTML=''; sessEl.innerHTML='';
-
-  planDays.forEach((day,i)=>{
-    const tab=document.createElement('button');
-    tab.className='day-tab'+(i===0?' active':'');
-    tab.textContent=`Day ${i+1}`;
-    tab.onclick=()=>switchDay(i);
-    tabsEl.appendChild(tab);
-
-    const sess=document.createElement('div');
-    sess.className='session'+(i===0?' active':'');
-    sess.id=`sess${i}`;
-    sess.innerHTML=buildSession(day,goal,level);
-    sessEl.appendChild(sess);
-  });
-
-  document.getElementById('selectorScreen').style.display='none';
-  const ps=document.getElementById('planScreen');
-  ps.style.display='block';
-  ps.classList.add('active');
-  window.scrollTo(0,0);
-  setTimeout(reportHeight,200);
-}
-
-function buildSession(day,goal,level){
-  const g=GOALS[goal];
-  const sets=level==='advanced'?4:3;
-  const restNote=g.rest;
-
-  let html=`<div class="session-hdr"><div class="session-title">${day.name}</div><div class="session-sub">${sets} rounds per block · ${restNote}</div></div>`;
-
-  // Warm up
-  html+=buildBlock('🔥 Warm Up','2 rounds — move with purpose, not speed',day.warmup.map(function(e){
-    const cleanName=e.replace(/ \(light\)/,'').replace(/ \(skip if none\)/,'').replace(/^\d+ /,'').trim();
-    const link=V[cleanName];
-    const uid2='v'+Math.random().toString(36).slice(2,9);
+  // TABS + SESSIONS
+const tabsEl=document.getElementById('dayTabs');
+const sessEl=document.getElementById('sessions');
+tabsEl.innerHTML=''; sessEl.innerHTML='';
+@@ -1193,18 +1150,13 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+const cleanName=e.replace(/ \(light\)/,'').replace(/ \(skip if none\)/,'').replace(/^\d+ /,'').trim();
+const link=V[cleanName];
+const uid2='v'+Math.random().toString(36).slice(2,9);
+    const lBtn=link?'<div class="ex-link"><button id="vb-'+uid2+'" onclick="toggleVideo(\''+uid2+'\',\''+link+'\')">▶ Watch</button></div>':'';
     const lBtn=link?'<div class="ex-link"><button id="vb-'+uid2+'" onclick="toggleVideo(\''+uid2+'\',\''+link+'\')">&#9654; Watch</button></div>':'';
-    const vcDiv=link?'<div class="video-container" id="vc-'+uid2+'"></div>':'';
-    return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-info"><div class="ex-name">'+e+'</div></div>'+lBtn+'</div>'+vcDiv+'</div>';
+const vcDiv=link?'<div class="video-container" id="vc-'+uid2+'"></div>':'';
+return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-info"><div class="ex-name">'+e+'</div></div>'+lBtn+'</div>'+vcDiv+'</div>';
+  }).join(''),'');
   }).join(''),'');;
 
-  html+=buildBlock('💪 Tri-Set A',`${sets} rounds — back to back`,buildExList(day.triA,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
-  html+=buildBlock('🔁 Tri-Set B',`${sets} rounds — back to back`,buildExList(day.triB,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
-  html+=buildBlock('🧠 Core Finisher','2 rounds',buildExList(day.core,goal),'');
+  // Tri-set A
+html+=buildBlock('💪 Tri-Set A',`${sets} rounds — back to back`,buildExList(day.triA,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
 
-  return html;
-}
+  // Tri-set B
+html+=buildBlock('🔁 Tri-Set B',`${sets} rounds — back to back`,buildExList(day.triB,goal),`<div class="rest-note">⏱ ${restNote} after final exercise. Repeat for ${sets} rounds.</div>`);
 
-function getYouTubeId(url){
-  if(!url) return null;
-  const m=url.match(/(?:youtu\.be\/|v=|\/v\/|embed\/)([^?&"'>]+)/);
-  return m?m[1]:null;
+  // Core
+html+=buildBlock('🧠 Core Finisher','2 rounds',buildExList(day.core,goal),'');
+
+return html;
+@@ -1215,7 +1167,9 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+const m=url.match(/(?:youtu\.be\/|v=|\/v\/|embed\/)([^?&"'>]+)/);
+return m?m[1]:null;
 }
 
 let activeVid=null;
 
 function toggleVideo(uid,url){
-  const container=document.getElementById('vc-'+uid);
-  const btn=document.getElementById('vb-'+uid);
-  if(!container||!btn) return;
-  if(container.style.display==='block'){
-    container.style.display='none';
-    container.innerHTML='';
-    btn.textContent='▶ Watch';
-    btn.classList.remove('vactive');
-    if(activeVid===uid) activeVid=null;
-    setTimeout(reportHeight,200);
-    return;
-  }
-  if(activeVid){
-    const pv=document.getElementById('vc-'+activeVid);
-    const pb=document.getElementById('vb-'+activeVid);
-    if(pv){pv.style.display='none';pv.innerHTML='';}
-    if(pb){pb.textContent='▶ Watch';pb.classList.remove('vactive');}
-  }
-  const ytId=getYouTubeId(url);
-  if(!ytId) return;
+const container=document.getElementById('vc-'+uid);
+const btn=document.getElementById('vb-'+uid);
+@@ -1237,35 +1191,44 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+}
+const ytId=getYouTubeId(url);
+if(!ytId) return;
+  container.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/'+ytId+'?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
   // FIX: no autoplay, playsinline for mobile
   container.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/'+ytId+'?rel=0&playsinline=1" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen playsinline="1"></iframe></div>';
-  container.style.display='block';
-  btn.textContent='✕ Close';
-  btn.classList.add('vactive');
-  activeVid=uid;
-  setTimeout(reportHeight,400);
+container.style.display='block';
+btn.textContent='✕ Close';
+btn.classList.add('vactive');
+activeVid=uid;
+setTimeout(reportHeight,400);
 }
 
 function toggleCooldown(){
-  const c=document.getElementById('cooldownVideo');
-  const b=document.getElementById('cooldownBtn');
-  if(c.style.display==='block'){
-    c.style.display='none';c.innerHTML='';b.textContent='▶ Watch';
-  } else {
+const c=document.getElementById('cooldownVideo');
+const b=document.getElementById('cooldownBtn');
+if(c.style.display==='block'){
+c.style.display='none';c.innerHTML='';b.textContent='▶ Watch';
+} else {
+    c.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/FdUFhUuJl1E?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
     // FIX: standard embed URL, no autoplay, playsinline
     c.innerHTML='<div class="video-wrap"><iframe src="https://www.youtube.com/embed/FdUFhUuJl1E?rel=0&playsinline=1" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen playsinline="1"></iframe></div>';
-    c.style.display='block';b.textContent='✕ Close';
-  }
-  setTimeout(reportHeight,400);
+c.style.display='block';b.textContent='✕ Close';
+}
+setTimeout(reportHeight,400);
 }
 
 function buildExList(exercises,goal){
-  return exercises.map((ex,i)=>{
-    const reps=getReps(ex.type,goal);
-    const link=V[ex.name];
-    const uid='v'+Math.random().toString(36).slice(2,9);
+return exercises.map((ex,i)=>{
+const reps=getReps(ex.type,goal);
+const link=V[ex.name];
+const uid='v'+Math.random().toString(36).slice(2,9);
+    const linkHtml=link?'<div class="ex-link"><button id="vb-'+uid+'" onclick="toggleVideo(\''+uid+'\',\''+link+'\')">▶ Watch</button></div>':'';
     const linkHtml=link?'<div class="ex-link"><button id="vb-'+uid+'" onclick="toggleVideo(\''+uid+'\',\''+link+'\')">&#9654; Watch</button></div>':'';
-    const vcDiv=link?'<div class="video-container" id="vc-'+uid+'"></div>':'';
+const vcDiv=link?'<div class="video-container" id="vc-'+uid+'"></div>':'';
+    return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-num">'+(i+1)+'</div><div class="ex-info"><div class="ex-name">'+ex.name+'</div><div class="ex-detail">'+ex.sets+' sets · '+reps+'</div></div>'+linkHtml+'</div>'+vcDiv+'</div>';
     const altName=ALTS[ex.name];
     const altLink=altName?V[altName]:null;
     const altUid='v'+Math.random().toString(36).slice(2,9);
     const altSection=altLink?('<div style="padding:2px 0 6px 32px"><div class="ex-alt-label">Can\'t do this?</div><div class="ex-link"><button class="alt-watch-btn" id="vb-'+altUid+'" onclick="toggleVideo(\''+altUid+'\',\''+altLink+'\')">&#9654; '+altName+'</button></div><div class="video-container" id="vc-'+altUid+'"></div></div>'):'';
     return '<div class="ex-row-wrap"><div class="ex-row-inner"><div class="ex-num">'+(i+1)+'</div><div class="ex-info"><div class="ex-name">'+ex.name+'</div><div class="ex-detail">'+ex.sets+' sets · '+reps+'</div></div>'+linkHtml+'</div>'+vcDiv+altSection+'</div>';
-  }).join('');
+}).join('');
 }
 
 
 function buildBlock(title,meta,content,footer){
-  const id='blk'+Math.random().toString(36).slice(2,7);
-  return `<div class="block"><div class="block-hdr" onclick="toggleBlock('${id}')"><span class="block-name">${title}</span><div style="display:flex;align-items:center;gap:12px"><span class="block-meta">${meta}</span><span class="block-chevron open" id="chev${id}">▼</span></div></div><div class="block-body open" id="${id}">${content}${footer}</div></div>`;
+const id='blk'+Math.random().toString(36).slice(2,7);
+return `<div class="block"><div class="block-hdr" onclick="toggleBlock('${id}')"><span class="block-name">${title}</span><div style="display:flex;align-items:center;gap:12px"><span class="block-meta">${meta}</span><span class="block-chevron open" id="chev${id}">▼</span></div></div><div class="block-body open" id="${id}">${content}${footer}</div></div>`;
+@@ -1294,7 +1257,6 @@ <h1 id="planTitle">Your Plan Is Ready</h1>
+setTimeout(reportHeight,200);
 }
 
-function toggleBlock(id){
-  const body=document.getElementById(id);
-  const chev=document.getElementById('chev'+id);
-  const open=body.classList.toggle('open');
-  chev.classList.toggle('open',open);
-  setTimeout(reportHeight,100);
-}
-
-function switchDay(i){
-  document.querySelectorAll('.day-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
-  document.querySelectorAll('.session').forEach((s,j)=>s.classList.toggle('active',j===i));
-  window.scrollTo(0,0);
-  setTimeout(reportHeight,100);
-}
-
-function resetPlan(){
-  document.getElementById('planScreen').style.display='none';
-  document.getElementById('planScreen').classList.remove('active');
-  document.getElementById('selectorScreen').style.display='block';
-  window.scrollTo(0,0);
-  setTimeout(reportHeight,200);
-}
-
+// Height reporting for Notion iframe
 function reportHeight(){
-  const h=document.documentElement.scrollHeight;
-  window.parent.postMessage({type:'setHeight',height:h},'*');
-}
-setTimeout(reportHeight,300);
-new MutationObserver(reportHeight).observe(document.body,{childList:true,subtree:true});
-window.addEventListener('resize',reportHeight);
-</script>
-</body>
-</html>
+const h=document.documentElement.scrollHeight;
+window.parent.postMessage({type:'setHeight',height:h},'*');
